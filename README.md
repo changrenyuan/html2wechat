@@ -25,16 +25,19 @@ Web2WeChat is a tool that converts a web article URL into **WeChat Official Acco
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - Next.js
 - React
 - Cloudflare Pages
 
 ### Backend
+
 - Next.js API Routes (Serverless)
 - Fetch + DOM parsing
 - HTML sanitization
 
 ## 📦 Project Structure
+```
 ├─ app/
 │ ├─ page.tsx # Main UI
 │ └─ api/
@@ -46,7 +49,7 @@ Web2WeChat is a tool that converts a web article URL into **WeChat Official Acco
 │ └─ template.ts # WeChat HTML templates
 ├─ public/
 └─ README.md
-
+```
 ## ⚠️ Limitations
 
 - Complex layouts (grid, flex, cards) are not supported
@@ -64,5 +67,3 @@ Web2WeChat is a tool that converts a web article URL into **WeChat Official Acco
 ## 📄 License
 
 MIT
-
-
