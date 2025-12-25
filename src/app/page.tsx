@@ -17,7 +17,11 @@ export default function Page() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ urls: urls.split("\n").map(u => u.trim()).filter(u=>u), template }),
       });
-      const data = await res.json();
+    const data = (await res.json()) as {
+      url: string;
+      html?: string;
+      error?: string;
+    }[];
       setResults(data);
     } catch (err:any) {
       alert(err.message || "转换失败");

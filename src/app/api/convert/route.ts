@@ -106,7 +106,8 @@ async function convertSingle(url: string, template: string, index: number) {
 
 export async function POST(req: Request) {
   try {
-    const { urls, template } = await req.json();
+    const body = (await req.json()) as { urls: string[]; template?: string };
+    const { urls, template } = body;
     if (!urls || !Array.isArray(urls) || urls.length === 0)
       return new Response("Missing URLs", { status: 400 });
 
