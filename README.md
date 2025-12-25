@@ -1,63 +1,68 @@
-# Next.js Framework Starter
+# Web2WeChat
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
+Convert web articles into WeChat Official Account compatible rich text.
 
-<!-- dash-content-start -->
+## ✨ What is this?
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+Web2WeChat is a tool that converts a web article URL into **WeChat Official Account editor compatible HTML**, allowing you to copy and paste the content directly into the WeChat editor without losing styles.
 
-This template uses [OpenNext](https://opennext.js.org/) via the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare), which works by taking the Next.js build output and transforming it, so that it can run in Cloudflare Workers.
+## 🚀 Features
 
-<!-- dash-content-end -->
+- Input a web page URL
+- Automatically extract main article content
+- Convert content into WeChat-safe HTML
+- Preview rendered result
+- One-click copy for WeChat editor
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## 🧠 How it works
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/next-starter-template
-```
+1. Fetch the HTML content from the given URL
+2. Extract main article content
+3. Remove unsupported tags and styles
+4. Rebuild layout using WeChat-compatible inline styles
+5. Return sanitized HTML for copying
 
-A live public deployment of this template is available at [https://next-starter-template.templates.workers.dev](https://next-starter-template.templates.workers.dev)
+## 🛠 Tech Stack
 
-## Getting Started
+### Frontend
+- Next.js
+- React
+- Cloudflare Pages
 
-First, run:
+### Backend
+- Next.js API Routes (Serverless)
+- Fetch + DOM parsing
+- HTML sanitization
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+## 📦 Project Structure
+├─ app/
+│ ├─ page.tsx # Main UI
+│ └─ api/
+│ └─ convert/
+│ └─ route.ts # Conversion API
+├─ lib/
+│ ├─ extract.ts # Article extraction
+│ ├─ sanitize.ts # HTML sanitization
+│ └─ template.ts # WeChat HTML templates
+├─ public/
+└─ README.md
 
-Then run the development server (using the package manager of your choice):
+## ⚠️ Limitations
 
-```bash
-npm run dev
-```
+- Complex layouts (grid, flex, cards) are not supported
+- JavaScript and animations are removed
+- Only WeChat-supported HTML tags are preserved
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Roadmap
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [ ] Basic URL to WeChat HTML conversion
+- [ ] Preview panel
+- [ ] Theme templates
+- [ ] Browser extension
+- [ ] Batch processing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📄 License
 
-## Deploying To Production
+MIT
 
-| Command                           | Action                                       |
-| :-------------------------------- | :------------------------------------------- |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
-| `npm wrangler tail`               | View real-time logs for all Workers          |
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
